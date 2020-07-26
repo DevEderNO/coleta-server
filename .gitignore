@@ -2,4 +2,3 @@ node_modules
 
 *.lock
 *.sqlite
-src/database/database.sqlite
