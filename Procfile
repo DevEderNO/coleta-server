@@ -1,0 +1,1 @@
+web: yarn prod && yarn knex:migrate && yarn knex:seed

@@ -12,6 +12,16 @@ const pointsController = new PointsController();
 const itemsController = new ItemsController();
 
 routes.get("/items", itemsController.index);
+routes.post(
+  "/items",
+  upload.single("image"),
+  celebrate({
+    body: Joi.object().keys({
+      title: Joi.string().required(),
+    }),
+  }),
+  itemsController.create
+);
 
 routes.get("/points", pointsController.index);
 routes.get("/points/:id", pointsController.show);

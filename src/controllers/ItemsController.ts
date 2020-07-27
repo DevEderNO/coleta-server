@@ -1,15 +1,15 @@
-import { Request, Response } from 'express';
-import knex from '../database/connection';
+import { Request, Response } from "express";
+import knex from "../database/connection";
 
 interface Item {
   id: number;
-  title: string,
-  image: string,
+  title: string;
+  image: string;
 }
 
 class ItemsController {
   async index(req: Request, res: Response) {
-    const items:Item[] = await knex('items').select('*');
+    const items: Item[] = await knex("items").select("*");
 
     const serializedItems = items.map((item) => {
       return {
@@ -20,6 +20,21 @@ class ItemsController {
     });
 
     return res.json(serializedItems);
+  }
+
+  async create(req: Request, res: Response) {
+    const { title } = req.body;
+
+    const item = {
+      image: req.file.filename,
+      title,
+    };
+
+    const inserted = await knex("items").insert(item);
+
+    res.json({
+      inserted,
+    });
   }
 }
 
