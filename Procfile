@@ -1,1 +1,1 @@
-web: yarn build && yarn knex:migrate && yarn knex:seed && yarn prod
+web: node .build/src/server.js
