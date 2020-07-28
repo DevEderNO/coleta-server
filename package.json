@@ -8,8 +8,8 @@
     "build": "rimraf ./build && tsc",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
     "knex:seed": "knex --knexfile knexfile.ts seed:run",
-    "knex:migrate:prod": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:seed:prod": "knex --knexfile knexfile.ts seed:run"
+    "knex:migrate:prod": "knex --knexfile knexfile.js migrate:latest",
+    "knex:seed:prod": "knex --knexfile knexfile.js seed:run"
   },
   "keywords": [],
   "author": "DevEderNo",
