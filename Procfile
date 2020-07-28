@@ -1,1 +1,1 @@
-web: ts-node src/server.ts
+web: yarn build && yarn knex:migrate && yarn knex:seed && yarn prod
