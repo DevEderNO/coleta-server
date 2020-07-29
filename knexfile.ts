@@ -1,15 +1,44 @@
-const path = require("path");
+import path from "path";
 
-module.exports = {
-  client: "sqlite3",
-  connection: {
-    filename: path.resolve(__dirname, "src", "database", "database.sqlite"),
+const config = {
+  develop: {
+    client: "sqlite3",
+    connection: {
+      filename: path.resolve(__dirname, "src", "database", "database.sqlite"),
+    },
+    migrations: {
+      directory: path.resolve(__dirname, "src", "database", "migrations"),
+    },
+    seeds: {
+      directory: path.resolve(__dirname, "src", "database", "seeds"),
+    },
+    useNullAsDefault: true,
   },
-  migrations: {
-    directory: path.resolve(__dirname, "src", "database", "migrations"),
+  production: {
+    client: "sqlite3",
+    connection: {
+      filename: path.resolve(
+        __dirname,
+        "buld",
+        "src",
+        "database",
+        "database.sqlite"
+      ),
+    },
+    migrations: {
+      directory: path.resolve(
+        __dirname,
+        "buld",
+        "src",
+        "database",
+        "migrations"
+      ),
+    },
+    seeds: {
+      directory: path.resolve(__dirname, "buld", "src", "database", "seeds"),
+    },
+    useNullAsDefault: true,
   },
-  seeds: {
-    directory: path.resolve(__dirname, "src", "database", "seeds"),
-  },
-  useNullAsDefault: true,
 };
+
+export default config;
